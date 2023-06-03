@@ -33,6 +33,6 @@ cleanup:
 mirror:
 	docker exec -it -w /data pypi_mirror ./mirror.sh
 
-.PHONY: exec
-exec:
+.PHONY: shell
+shell:
 	docker exec -it pypi_mirror /bin/bash
