@@ -20,6 +20,7 @@ run:
 		-v /opt/devstack/packages:/data/packages \
 		-v /opt/pypi_mirror/pip_dir:/root/.cache/pip \
 		-v /opt/pypi_mirror/tmp_dir:/tmp \
+		-v ./mirror.sh:/data/mirror.sh:ro \
 		-v ./requirements.txt:/data/requirements.txt:ro \
 		-w /data \
 		172.16.16.1:5000/pypi_mirror:latest \
