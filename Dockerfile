@@ -20,7 +20,6 @@ RUN apt-get update \
         bc \
         bison \
         build-essential \
-        cmake \
         curl \
         flex \
         git \
@@ -32,6 +31,7 @@ RUN apt-get update \
         libffi-dev libfontconfig1 libgtk2.0-0 libxslt1.1 libxxf86vm1 \
         libgmp-dev libisl-dev libmpfr-dev libmpc-dev libpq-dev libncurses5-dev \
         libncurses-dev libssl-dev libssh-dev \
+	pkg-config \
         software-properties-common \
         unzip \
         wget \
@@ -41,7 +41,15 @@ RUN apt-get update \
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 RUN pip3 install -U pip \
-    && pip install 'cmake<3.23' python-pypi-mirror \
+    && pip install python-pypi-mirror \
     && pip install --upgrade pip setuptools wheel
+
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.26.4/cmake-3.26.4.tar.gz \
+    && tar zxvf cmake-3.26.4.tar.gz \
+    && cd cmake-3.26.4 \
+    && ./bootstrap \
+    && make \
+    && make install \
+    && cd ../; rm -rf cmake-3.26.4*
 
 CMD ["sleep", "infinity"]
