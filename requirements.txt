@@ -1,5 +1,4 @@
 alembic
-ast
 black
 cherrypy
 click
@@ -26,8 +25,11 @@ markdown
 neovim
 nodejs
 nose
+numpy~=1.26.4
 ollama
 oterm
+packaging<21.0,>=20.4
+platformdirs<3.0.0,>=2.5.2
 psycopg2-binary
 pudb
 pydantic
@@ -39,11 +41,12 @@ pytest
 pytest-cov
 pytest-mccabe
 pytest-timeout
+requests-toolbelt<0.9.0,>=0.8.0
 requests
 rich
 selenium
 setuptools_scm
-setuptools
+setuptools>=75.0.1
 shortuuid
 six
 sqlalchemy
@@ -52,6 +55,6 @@ textual
 textual-dev
 toml
 typer
-urllib3
+urllib3<2.0.0,>=1.26.0
 uvicorn
-wheel
+wheel~=0.37.1

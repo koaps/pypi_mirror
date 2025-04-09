@@ -1,10 +1,13 @@
 name := pypi_mirror
 
+dev_dir := /home/devstack
+pkg_dir := ${dev_dir}/packages
+
 .DEFAULT_GOAL := all
 
 ## all target
 .PHONY: all
-all: build push cleanup run
+all: build cleanup run
 
 .PHONY: build
 build:
@@ -17,9 +20,9 @@ push:
 .PHONY: run
 run:
 	docker run -d --name ${name} \
-		-v /opt/devstack/packages:/data/packages \
-		-v /opt/pypi_mirror/pip_dir:/root/.cache/pip \
-		-v /opt/pypi_mirror/tmp_dir:/tmp \
+		-v ${pkg_dir}:/data/packages \
+		-v ${dev_dir}/${name}/pip_dir:/root/.cache/pip \
+		-v ${dev_dir}/${name}/tmp_dir:/tmp \
 		-v ./mirror.sh:/data/mirror.sh:ro \
                 -v ./requirements.txt:/data/requirements.txt:ro \
 		-w /data \
@@ -32,7 +35,7 @@ cleanup:
 .PHONY: mirror
 mirror: restart
 	docker exec -it -w /data ${name} ./mirror.sh
-	docker restart pypi_server
+	docker restart ${name}
 
 .PHONY: restart
 restart:
