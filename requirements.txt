@@ -19,6 +19,7 @@ flake8-pytest-style
 flake8-raise
 flake8-string-format
 flake8_implicit_str_concat
+hatchling>=1.27.0
 httpie
 marshmallow
 markdown
@@ -28,8 +29,7 @@ nose
 numpy~=1.26.4
 ollama
 oterm
-packaging<21.0,>=20.4
-platformdirs<3.0.0,>=2.5.2
+packaging>=24.2
 psycopg2-binary
 pudb
 pydantic
@@ -41,7 +41,7 @@ pytest
 pytest-cov
 pytest-mccabe
 pytest-timeout
-requests-toolbelt<0.9.0,>=0.8.0
+requests-toolbelt
 requests
 rich
 selenium
@@ -55,6 +55,6 @@ textual
 textual-dev
 toml
 typer
-urllib3<2.0.0,>=1.26.0
+urllib3
 uvicorn
-wheel~=0.37.1
+wheel
