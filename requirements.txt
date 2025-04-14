@@ -50,6 +50,7 @@ setuptools>=75.0.1
 shortuuid
 six
 sqlalchemy
+sqllite3
 sqlmodel
 textual
 textual-dev
