@@ -45,7 +45,7 @@ requests-toolbelt
 requests
 rich
 selenium
-setuptools_scm
+setuptools_scm<8.0
 setuptools>=75.0.1
 shortuuid
 six
