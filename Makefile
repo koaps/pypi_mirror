@@ -37,6 +37,12 @@ mirror: restart
 	docker exec -it -w /data ${name} ./mirror.sh
 	docker restart ${name}
 
+.PHONY: rebuild
+rebuild: down build up
+
+.PHONY: rebuild_clean
+rebuild_clean: down clean build up
+
 .PHONY: restart
 restart:
 	docker restart ${name}
@@ -44,3 +50,9 @@ restart:
 .PHONY: shell
 shell:
 	docker exec -it ${name} /bin/bash
+
+.PHONY: up
+up:
+	docker network inspect local >/dev/null 2>&1 && true || docker network create --subnet=172.16.16.0/24 local
+	docker-compose up -d ${name}
+
